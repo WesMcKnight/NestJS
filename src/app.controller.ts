@@ -1,4 +1,4 @@
-import {Controller, Get, Post, Put, Delete, Param} from "@nestjs/common"
+import {Controller, Get, Post, Put, Delete, Param, Body} from "@nestjs/common"
 import { data, ReportType, } from "src/data";
 
 @Controller('report/:type')
@@ -20,8 +20,9 @@ export class AppController {
   }
 
   @Post()
-  createReport(){
-    return ('Created')
+  createReport(@Body() body: {amount: number; source: string}) {
+    console.log({ body });
+    return 'Created';
   }
 
   @Put(':id')
